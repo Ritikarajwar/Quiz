@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!--     
+    <input type="radio" value=" " id="first">
+    <label for="a" class="optiona"></label>
+    <br>
+    <input type="radio" value=" " id="second">
+    <label for="b" class="optionb"></label>
+    <br>
+    <input type="radio" value=" " id="third">
+    <label for="c" class="optionc"></label>
+    <br>
+    <input type="radio" value=" " id="fourth">
+    <label for="d" class="optiond"></label>
+    <br>
+         
+    
+    <p id="paragraph"></p> -->
+
+<h1 class="question"></h1>
+<div class="options">
+
+</div>
+<p></p>
+
+
+    <script>
+// let para = document.querySelector('p')
+let question = document.querySelector('.question')
+let options = document.querySelector('.options')
+let paragraph = document.querySelector('p')
+        let arr=[
+            {
+                Question:"what is 2+2?",
+                Options:{
+                    a:3,
+                    b:4,
+                    c:5,
+                    d:6
+                },Answer:4
+            },
+            {
+                Question:'what is 4+4?',
+                Options:{
+                    a:6,
+                    b:7,
+                    c:8,
+                    d:9
+                },Answer:8
+            },
+            {
+                Question:'what is 8+8?',
+                Options:{
+                    a:15,
+                    b:16,
+                    c:17,
+                    d:18
+                },Answer:16
+            },
+            {
+                Question:'what is 16+16?',
+                Options:{
+                    a:30,
+                    b:31,
+                    c:32,
+                    d:33
+                },Answer:32
+            }
+        ]
+        let temp =' '
+        let questionNumber=0
+        let useranswer=[]
+        showquestion();
+        showoption();
+        function showquestion(){
+            
+            question.innerHTML=arr[questionNumber].Question;
+        }
+        
+        
+        function showoption(){
+            options.innerHTML =''
+            for (const key in arr[questionNumber].Options) {
+                
+                let input = document.createElement('input');
+                input.setAttribute('type','radio');
+                input.setAttribute('name','option');
+                input.value=arr[questionNumber].Options[key];
+                input.setAttribute('onclick','storeuseranswer(this)');
+                useranswer.push(temp)
+                
+                
+                // useranswer.push(5)
+                input.innerHTML=arr[questionNumber].Options[key];
+                options.append(input)
+                
+                let span=document.createElement('span');
+                span.innerHTML=arr[questionNumber].Options[key];
+                options.append(span)    
+                
+            }
+        }
+        function storeuseranswer(aa){
+            console.log(aa.value)
+            temp=aa.value
+            
+            
+        }
+        
+        
+        
+        let i=0;
+        let interval=setInterval(()=>{
+            if(i==arr.length-1){
+                clearInterval(interval)
+                console.log(useranswer)
+            }
+            else{
+                questionNumber++
+showquestion()
+showoption()}i++
+},1000);
+
+
+// console.log(useranswer)
+// let i=0;
+// let interval=setInterval(()=>{
+// if(i==arr.length-1){
+//     clearInterval(interval)
+// }i++
+// },1000);
+ 
+
+
+
+
+
+
+    </script>
+</body>
+</html>
+
+
+
