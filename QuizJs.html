@@ -8,17 +8,16 @@
 <body>
 
 <h1 class="question"></h1>
-<div class="options">
+<div class="options"></div>
+<p><button>submit</button></p>
 
-</div>
-<p></p>
+<script>
 
-
-    <script>
-// let para = document.querySelector('p')
 let question = document.querySelector('.question')
 let options = document.querySelector('.options')
-let paragraph = document.querySelector('p')
+let para = document.querySelector('p')
+let submit =document.querySelector('button')
+
         let arr=[
             {
                 Question:"what is 2+2?",
@@ -77,10 +76,7 @@ let paragraph = document.querySelector('p')
                 input.setAttribute('name','option');
                 input.value=arr[questionNumber].Options[key];
                 input.setAttribute('onclick','storeuseranswer(this)');
-                useranswer.push(temp)
                 
-                
-                // useranswer.push(5)
                 input.innerHTML=arr[questionNumber].Options[key];
                 options.append(input)
                 
@@ -90,20 +86,23 @@ let paragraph = document.querySelector('p')
                 
             }
         }
+        let input=document.querySelector('input')
+        
         function storeuseranswer(aa){
-            console.log(aa.value)
-            temp=aa.value
-            
-            
+            console.log(aa)
+            // if(af){
+            // useranswer.push(aa.value)}
+            // else{
+            //     useranswer.push(temp)
+            // }
+            // console.log(useranswer)
         }
-        
-        
         
         let i=0;
         let interval=setInterval(()=>{
             if(i==arr.length-1){
                 clearInterval(interval)
-                console.log(useranswer)
+                // console.log(useranswer)
             }
             else{
                 questionNumber++
@@ -111,7 +110,16 @@ showquestion()
 showoption()}i++
 },1000);
 
+submit.onclick=()=>{
+    let correctanswer=[]
+    for(let i=0;i<arr.length;i++){
+        let ans=arr[i].Answer;
+        correctanswer.push(ans)
+        
+    }
+    console.log(correctanswer)
 
+}
 
  
 
